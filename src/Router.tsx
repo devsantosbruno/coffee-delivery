@@ -10,7 +10,7 @@ export function Router() {
     <Routes>
       <Route path="/" element={<DefaultLayout />}>
         <Route path="/" element={<Home />} />
-        <Route path="/payment" element={<Cart />} />
+        <Route path="/cart" element={<Cart />} />
       </Route>
     </Routes>
   );

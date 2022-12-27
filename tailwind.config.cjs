@@ -27,11 +27,10 @@ module.exports = {
 
         "purple-200": "#EBE5F9",
         "purple-400": "#8047F8",
-        "purple-600": "#4B2995",
+        "purple-800": "#4B2995",
       },
       backgroundImage: {
         withColors: "url('./src/assets/background-colors.svg')",
-        // withColors: "url('/background-colors.svg')",
       },
     },
   },
