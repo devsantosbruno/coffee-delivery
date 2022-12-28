@@ -26,16 +26,16 @@ export function Home() {
                   Compra simples e segura
                 </li>
                 <li className="flex items-center gap-2">
-                  <span className="w-8 h-8 flex items-center justify-center rounded-full text-white bg-yellow-500">
-                    <Timer size={16} weight="fill" />
-                  </span>
-                  Entrega rápida e rastreada
-                </li>
-                <li className="flex items-center gap-2">
                   <span className="w-8 h-8 flex items-center justify-center rounded-full text-white bg-brown-300">
                     <Package size={16} weight="fill" />
                   </span>
                   Embalagem mantém o café intacto
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="w-8 h-8 flex items-center justify-center rounded-full text-white bg-yellow-500">
+                    <Timer size={16} weight="fill" />
+                  </span>
+                  Entrega rápida e rastreada
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="w-8 h-8 flex items-center justify-center rounded-full text-white bg-purple-500">

@@ -1,9 +1,12 @@
 import { Minus, Plus, ShoppingCart } from "phosphor-react";
+import { useState } from "react";
 import { Badge } from "./Badge";
 
 import coffee from "../assets/coffee-american.png";
 
 export function Product() {
+  const [quantity, setQuantity] = useState(1);
+
   return (
     <div className="bg-gray-200 rounded-tl-md rounded-tr-[36px] rounded-bl-[36px] rounded-br-md px-6 py-5 text-center shadow-md">
       <img src={coffee} alt="" className="-mt-10 mx-auto mb-3" />
@@ -29,13 +32,15 @@ export function Product() {
           <div className="bg-gray-400 px-3 py-2 rounded-md flex items-center gap-3">
             <button
               type="button"
+              onClick={(prevState: any) => console.log(prevState)}
               className="text-purple-400 hover:text-purple-800 transition duration-150"
             >
               <Minus size={16} weight="bold" />
             </button>
-            <span className="text-brown-700">1</span>
+            <span className="text-brown-700">{quantity}</span>
             <button
               type="button"
+              onClick={(prevState: any) => setQuantity(prevState + 1)}
               className="text-purple-400 hover:text-purple-800 transition duration-150"
             >
               <Plus size={18} weight="bold" />
