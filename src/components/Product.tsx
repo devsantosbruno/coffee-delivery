@@ -5,7 +5,9 @@ import { Badge } from "./Badge";
 import coffee from "../assets/coffee-american.png";
 
 export function Product() {
-  const [quantity, setQuantity] = useState(1);
+  const [quantity, setQuantity] = useState<number>(1);
+
+  console.log(quantity);
 
   return (
     <div className="bg-gray-200 rounded-tl-md rounded-tr-[36px] rounded-bl-[36px] rounded-br-md px-6 py-5 text-center shadow-md">
@@ -32,7 +34,12 @@ export function Product() {
           <div className="bg-gray-400 px-3 py-2 rounded-md flex items-center gap-3">
             <button
               type="button"
-              onClick={(prevState: any) => console.log(prevState)}
+              onClick={() =>
+                setQuantity((prevState) =>
+                  prevState > 0 ? prevState - 1 : prevState
+                )
+              }
+              disabled={quantity <= 0 && true}
               className="text-purple-400 hover:text-purple-800 transition duration-150"
             >
               <Minus size={16} weight="bold" />
@@ -40,7 +47,7 @@ export function Product() {
             <span className="text-brown-700">{quantity}</span>
             <button
               type="button"
-              onClick={(prevState: any) => setQuantity(prevState + 1)}
+              onClick={() => setQuantity((prevState) => prevState + 1)}
               className="text-purple-400 hover:text-purple-800 transition duration-150"
             >
               <Plus size={18} weight="bold" />
