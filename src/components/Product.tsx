@@ -8,6 +8,7 @@ export function Product() {
   const [quantity, setQuantity] = useState<number>(1);
 
   console.log(quantity);
+  window.navigator.geolocation.getCurrentPosition(console.log, console.log);
 
   return (
     <div className="bg-gray-200 rounded-tl-md rounded-tr-[36px] rounded-bl-[36px] rounded-br-md px-6 py-5 text-center shadow-md">
