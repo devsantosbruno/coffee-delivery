@@ -6,7 +6,7 @@ export function Cart() {
   return (
     <main className="bg-gray-100">
       <section>
-        <div className="container px-4 lg:px-14 mx-auto mt-10">
+        <div className="container px-4 lg:px-14 mx-auto pt-10">
           <div className="grid grid-cols-9 gap-8">
             <div className="col-span-5">
               <h3 className="font-bold text-lg text-brown-500 mb-4">
@@ -17,7 +17,9 @@ export function Cart() {
                 <div className="flex gap-2 mb-8">
                   <MapPinLine size={20} className="text-yellow-700 mt-1" />
                   <div className="flex flex-col">
-                    <span className="text-brown-500">Endereço de Entrega</span>
+                    <span className="text-brown-500 font-semibold">
+                      Endereço de Entrega
+                    </span>
                     <span className="text-brown-300 text-sm">
                       Informe o endereço onde deseja receber seu pedido
                     </span>
@@ -56,7 +58,9 @@ export function Cart() {
                 <div className="flex gap-2 mb-8">
                   <CurrencyDollar size={20} className="mt-1 text-purple-400" />
                   <div className="flex flex-col">
-                    <span className="text-brown-500">Pagamento</span>
+                    <span className="text-brown-500 font-semibold">
+                      Pagamento
+                    </span>
                     <span className="text-brown-300 text-sm">
                       O pagamento é feito na entrega. Escolha a forma que deseja
                       pagar
@@ -64,8 +68,10 @@ export function Cart() {
                   </div>
                 </div>
 
-                <div className="flex flex-wrap gap-3">
-                  <Payment />
+                <div className="flex gap-3">
+                  <Payment type="CARTÃO DE CRÉDITO" />
+                  <Payment type="CARTÃO DE DÉBITO" />
+                  <Payment type="DINHEIRO" />
                 </div>
               </div>
             </div>
