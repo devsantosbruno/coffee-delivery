@@ -3,7 +3,7 @@ import image from "../../assets/illustration.svg";
 
 export function Summary() {
   return (
-    <main className="bg-gray-100 h-[calc(100vh-104px)] ">
+    <main className="bg-gray-100 min-h-[calc(100vh-104px)]">
       <section className="h-full flex items-center">
         <div className="container px-4 lg:px-14 mx-auto py-20">
           <div className="grid grid-cols-2 items-end gap-8 w-full">

@@ -1,8 +1,4 @@
-interface InputProps {
-  props: string;
-}
-
-export function Input(props: InputProps) {
+export function Input<HTMLElementTagNameMap>(props: HTMLElementTagNameMap) {
   return (
     <input
       type="text"

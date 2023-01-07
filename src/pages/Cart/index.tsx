@@ -6,16 +6,16 @@ import { ProductCart } from "./components/ProductCart";
 
 export function Cart() {
   return (
-    <main className="bg-gray-100 h-[calc(100vh-104px)]">
+    <main className="bg-gray-100 min-h-[calc(100vh-104px)]">
       <section>
-        <div className="container px-4 lg:px-14 mx-auto pt-10">
-          <div className="grid grid-cols-9 gap-8">
+        <div className="container px-4 lg:px-14 mx-auto py-10">
+          <div className="xl:grid grid-cols-9 gap-8">
             <div className="col-span-5">
               <h3 className="font-bold text-lg text-brown-500 mb-4">
                 Complete seu pedido
               </h3>
 
-              <div className="bg-gray-200 p-10 rounded-md shadow-sm">
+              <div className="bg-gray-200 p-6 sm:p-10 rounded-md shadow-sm">
                 <div className="flex gap-2 mb-8">
                   <MapPinLine size={20} className="text-yellow-700 mt-1" />
                   <div className="flex flex-col">
@@ -34,16 +34,20 @@ export function Cart() {
                       <Input placeholder="CEP" />
                     </div>
 
-                    <div className="d-grid grid-cols-1">
+                    <div>
                       <Input placeholder="Rua" />
                     </div>
 
-                    <div className="flex gap-3">
-                      <Input placeholder="Número" />
-                      <Input placeholder="Complemento (opcional)" />
+                    <div className="grid grid-cols-3 sm:grid-cols-4 gap-3">
+                      <div className="sm:col-span-2">
+                        <Input placeholder="Número" />
+                      </div>
+                      <div className="col-span-2">
+                        <Input placeholder="Complemento (opcional)" />
+                      </div>
                     </div>
 
-                    <div className="grid grid-cols-2 gap-3">
+                    <div className="grid sm:grid-cols-2 gap-3">
                       <Input placeholder="Bairro" />
                       <div className="flex gap-3">
                         <Input placeholder="Cidade" />
@@ -56,7 +60,7 @@ export function Cart() {
                 </form>
               </div>
 
-              <div className="bg-gray-200 p-10 rounded-md mt-3 shadow-sm">
+              <div className="bg-gray-200 p-6 sm:p-10 rounded-md mt-3 shadow-sm">
                 <div className="flex gap-2 mb-8">
                   <CurrencyDollar size={20} className="mt-1 text-purple-400" />
                   <div className="flex flex-col">
@@ -70,7 +74,7 @@ export function Cart() {
                   </div>
                 </div>
 
-                <div className="flex gap-3">
+                <div className="flex flex-wrap sm:flex-nowrap justify-center gap-3">
                   <Payment type="CARTÃO DE CRÉDITO" />
                   <Payment type="CARTÃO DE DÉBITO" />
                   <Payment type="DINHEIRO" />
@@ -78,12 +82,12 @@ export function Cart() {
               </div>
             </div>
 
-            <div className="col-span-4">
+            <div className="mt-10 xl:mt-0 col-span-4">
               <h3 className="font-bold text-lg text-brown-500 mb-4">
                 Cafés selecionados
               </h3>
 
-              <div className="bg-gray-200 p-10 rounded-tl-md rounded-tr-[44px] rounded-bl-[44px] rounded-br-md shadow-sm">
+              <div className="bg-gray-200 p-6 sm:p-10 rounded-tl-md rounded-tr-[44px] rounded-bl-[44px] rounded-br-md shadow-sm">
                 <ProductCart />
                 <ProductCart />
 

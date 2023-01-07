@@ -10,7 +10,7 @@ export function ProductCart() {
   return (
     <div>
       <div className="flex justify-between gap-5 py-8 border-b-[1px] border-gray-400">
-        <div className="flex gap-5">
+        <div className="flex flex-col sm:flex-row gap-5">
           <img
             src={coffeeTraditional}
             alt=""
@@ -18,7 +18,7 @@ export function ProductCart() {
           />
 
           <div className="flex flex-col justify-between">
-            <h4 className="text-brown-500 font-semibold">
+            <h4 className="text-brown-500 font-semibold mb-2">
               Expresso Tradicional
             </h4>
 
