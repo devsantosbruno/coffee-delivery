@@ -7,8 +7,6 @@ import { Home } from "./pages/Home";
 import { Summary } from "./pages/Summary";
 
 export function Router() {
-  // window.navigator.geolocation.getCurrentPosition(console.log, console.log);
-
   return (
     <Routes>
       <Route path="/" element={<DefaultLayout />}>
