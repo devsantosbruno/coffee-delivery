@@ -31,6 +31,8 @@ module.exports = {
       },
       backgroundImage: {
         withColors: "url('./src/assets/background-colors.svg')",
+        gradientBorder:
+          "linear-gradient(90deg, rgba(219,172,44,1) 0%, rgba(128,71,248,1) 100%)",
       },
     },
   },

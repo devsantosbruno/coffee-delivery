@@ -1,9 +1,19 @@
+import axios from "axios";
 import { Coffee, Package, ShoppingCart, Timer } from "phosphor-react";
+import { useEffect, useState } from "react";
 
 import imageMain from "../../assets/image-main.png";
 import { Product } from "../../components/Product";
 
 export function Home() {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("https://api.npoint.io/a380939a53668d2393dd", {})
+      .then((response) => setProducts(response.data));
+  }, []);
+
   return (
     <main className="max-w-screen overflow-hidden bg-gray-100">
       <section className="bg-withColors bg-cover bg-center bg-no-repeat">
@@ -13,6 +23,7 @@ export function Home() {
               <h1 className="text-5xl font-bold text-brown-700 leading-[62px]">
                 Encontre o café perfeito para qualquer hora do dia
               </h1>
+
               <p className="text-xl mt-4 text-brown-500">
                 Com o Coffee Delivery você recebe seu café onde estiver, a
                 qualquer hora
@@ -60,11 +71,16 @@ export function Home() {
           </h2>
 
           <div className="grid grid-cols-4 gap-x-8 gap-y-10">
-            <Product />
-            <Product />
-            <Product />
-            <Product />
-            <Product />
+            {products.map((product: any) => (
+              <Product
+                key={product.name}
+                image={product.imgSrc}
+                tags={product.tags}
+                name={product.name}
+                description={product.description}
+                price={product.price}
+              />
+            ))}
           </div>
         </div>
       </section>
