@@ -15,9 +15,9 @@ export function Home() {
     <main className="max-w-screen overflow-hidden bg-gray-100">
       <section className="bg-withColors bg-cover bg-bottom bg-no-repeat">
         <div className="container px-4 lg:px-14 mx-auto">
-          <div className="grid grid-cols-9 py-24">
+          <div className="lg:grid grid-cols-9 py-10 md:py-24">
             <div className="col-span-5">
-              <h1 className="text-5xl font-bold text-brown-700 leading-[62px]">
+              <h1 className="text-4xl sm:text-5xl sm:leading-[62px] font-bold text-brown-700">
                 Encontre o café perfeito para qualquer hora do dia
               </h1>
 
@@ -26,7 +26,7 @@ export function Home() {
                 qualquer hora
               </p>
 
-              <ul className="text-brown-300 grid grid-cols-2 gap-5 mt-16">
+              <ul className="text-brown-300 grid sm:grid-cols-2 gap-5 mt-16">
                 <li className="flex items-center gap-2">
                   <span className="w-8 h-8 flex items-center justify-center rounded-full text-white bg-yellow-700">
                     <ShoppingCart size={16} weight="fill" />
@@ -54,8 +54,8 @@ export function Home() {
               </ul>
             </div>
 
-            <div className="col-span-4">
-              <img src={imageMain} alt="" className="ml-auto" />
+            <div className="col-span-4 mt-10 lg:mt-0">
+              <img src={imageMain} alt="" className="mx-auto lg:ml-auto" />
             </div>
           </div>
         </div>
@@ -67,7 +67,7 @@ export function Home() {
             Nossos cafés
           </h2>
 
-          <div className="grid grid-cols-4 gap-x-8 gap-y-10">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-x-8 gap-y-10">
             {catalog.map((product: CatalogProps) => (
               <Product
                 key={product.name}

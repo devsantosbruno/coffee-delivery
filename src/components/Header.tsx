@@ -36,7 +36,7 @@ export function Header() {
             </NavLink>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 shrink-0">
             <div className="flex items-center gap-2 bg-purple-200 text-purple-800 rounded-md p-2">
               <MapPin size={22} weight="fill" className="text-purple-400" />
               {userLocation.city !== undefined &&
