@@ -2,7 +2,7 @@ import { Minus, Plus, ShoppingCart } from "phosphor-react";
 import { useState } from "react";
 
 // import coffeeLatte from "../../../assets/coffee-latte.png";
-import coffeeTraditional from "../../../assets/coffee-traditional.png";
+import coffeeTraditional from "../../../assets/logo.png";
 
 export function ProductCart() {
   const [quantity, setQuantity] = useState<number>(1);

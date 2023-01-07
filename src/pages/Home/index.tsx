@@ -1,18 +1,12 @@
-import axios from "axios";
 import { Coffee, Package, ShoppingCart, Timer } from "phosphor-react";
-import { useEffect, useState } from "react";
+import { useContext } from "react";
 
 import imageMain from "../../assets/image-main.png";
 import { Product } from "../../components/Product";
+import { ProductsCatalogContext } from "../../contexts/ProductsCatalog";
 
 export function Home() {
-  const [products, setProducts] = useState([]);
-
-  useEffect(() => {
-    axios
-      .get("https://api.npoint.io/a380939a53668d2393dd", {})
-      .then((response) => setProducts(response.data));
-  }, []);
+  const { catalog } = useContext(ProductsCatalogContext);
 
   return (
     <main className="max-w-screen overflow-hidden bg-gray-100">
@@ -71,7 +65,7 @@ export function Home() {
           </h2>
 
           <div className="grid grid-cols-4 gap-x-8 gap-y-10">
-            {products.map((product: any) => (
+            {catalog.map((product: any) => (
               <Product
                 key={product.name}
                 image={product.imgSrc}
