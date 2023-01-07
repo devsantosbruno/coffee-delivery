@@ -3,7 +3,10 @@ import { useContext } from "react";
 
 import imageMain from "../../assets/image-main.png";
 import { Product } from "../../components/Product";
-import { ProductsCatalogContext } from "../../contexts/ProductsCatalog";
+import {
+  CatalogProps,
+  ProductsCatalogContext,
+} from "../../contexts/ProductsCatalog";
 
 export function Home() {
   const { catalog } = useContext(ProductsCatalogContext);
@@ -65,7 +68,7 @@ export function Home() {
           </h2>
 
           <div className="grid grid-cols-4 gap-x-8 gap-y-10">
-            {catalog.map((product: any) => (
+            {catalog.map((product: CatalogProps) => (
               <Product
                 key={product.name}
                 image={product.imgSrc}

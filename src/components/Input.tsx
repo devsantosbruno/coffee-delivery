@@ -1,4 +1,8 @@
-export function Input(props: any) {
+interface InputProps {
+  props: string;
+}
+
+export function Input(props: InputProps) {
   return (
     <input
       type="text"

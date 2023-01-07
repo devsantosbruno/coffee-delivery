@@ -5,7 +5,7 @@ interface ProductsCatalogProviderProps {
   children: ReactNode;
 }
 
-interface catalogProps {
+export interface CatalogProps {
   name: string;
   tags: string[];
   price: number;
@@ -14,7 +14,7 @@ interface catalogProps {
 }
 
 interface CatalogDataProps {
-  catalog: catalogProps[];
+  catalog: CatalogProps[];
 }
 
 export const ProductsCatalogContext = createContext({} as CatalogDataProps);
@@ -22,7 +22,7 @@ export const ProductsCatalogContext = createContext({} as CatalogDataProps);
 export function ProductsCatalogProvider({
   children,
 }: ProductsCatalogProviderProps) {
-  const [catalog, setCatalog]: any = useState<catalogProps[]>([]);
+  const [catalog, setCatalog] = useState<CatalogProps[]>([]);
 
   useEffect(() => {
     axios

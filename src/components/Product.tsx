@@ -3,7 +3,15 @@ import { useState } from "react";
 
 import { Badge } from "./Badge";
 
-export function Product(props: any) {
+interface ProductProps {
+  name: string;
+  tags: string[];
+  price: number;
+  image: string;
+  description: string;
+}
+
+export function Product(props: ProductProps) {
   const [quantity, setQuantity] = useState<number>(0);
 
   // normalizing values
@@ -14,8 +22,8 @@ export function Product(props: any) {
       <img src={`${props.image}`} alt="" className="-mt-10 mx-auto mb-3" />
 
       <div className="flex flex-wrap justify-center gap-1">
-        {props.tags.map((tagName: any) => (
-          <Badge key={tagName} tagTeste={tagName} />
+        {props.tags.map((tagName: string) => (
+          <Badge key={tagName} tagName={tagName} />
         ))}
       </div>
 
