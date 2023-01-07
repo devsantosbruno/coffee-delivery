@@ -10,7 +10,7 @@ export function Home() {
 
   return (
     <main className="max-w-screen overflow-hidden bg-gray-100">
-      <section className="bg-withColors bg-cover bg-center bg-no-repeat">
+      <section className="bg-withColors bg-cover bg-bottom bg-no-repeat">
         <div className="container px-4 lg:px-14 mx-auto">
           <div className="grid grid-cols-9 py-24">
             <div className="col-span-5">
