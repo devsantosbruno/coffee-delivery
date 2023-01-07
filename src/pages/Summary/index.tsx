@@ -5,9 +5,9 @@ export function Summary() {
   return (
     <main className="bg-gray-100 min-h-[calc(100vh-104px)]">
       <section className="h-full flex items-center">
-        <div className="container px-4 lg:px-14 mx-auto py-20">
-          <div className="grid grid-cols-2 items-end gap-8 w-full">
-            <div>
+        <div className="container px-4 lg:px-14 mx-auto py-10 md:py-20">
+          <div className="md:grid grid-cols-2 items-end gap-8 w-full">
+            <div className="mb-8 md:mb-0">
               <h1 className="text-yellow-700 font-extrabold text-4xl mb-1">
                 Uhu! Pedido confirmado
               </h1>
