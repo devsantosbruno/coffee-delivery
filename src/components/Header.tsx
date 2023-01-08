@@ -1,12 +1,16 @@
 import axios from "axios";
 import { MapPin, ShoppingCart } from "phosphor-react";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
+
+import { CartProducts } from "../contexts/CartProducts";
 
 import logo from "../assets/logo.png";
 
 export function Header() {
   const [userLocation, setUserLocation]: any = useState({});
+
+  const { productsCart } = useContext(CartProducts);
 
   useEffect(() => {
     const successfullLookup = (position: any) => {
@@ -54,7 +58,7 @@ export function Header() {
                 />
 
                 <span className="bg-yellow-700 text-white w-5 h-5 flex items-center justify-center rounded-full text-xs absolute -top-[10px] -right-[10px]">
-                  3
+                  {productsCart.length}
                 </span>
               </div>
             </NavLink>
