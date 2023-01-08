@@ -1,5 +1,7 @@
 import { Minus, Plus, ShoppingCart } from "phosphor-react";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
+
+import { CartProducts } from "../contexts/CartProducts";
 
 import { Badge } from "./Badge";
 
@@ -14,8 +16,14 @@ interface ProductProps {
 export function Product(props: ProductProps) {
   const [quantity, setQuantity] = useState<number>(0);
 
+  const { productsCart, setProductsCart } = useContext(CartProducts);
+
   // normalizing values
   let priceBR = props.price.toFixed(2).replace(".", ",");
+
+  useEffect(() => {
+    console.log(productsCart);
+  }, [productsCart]);
 
   return (
     <div className="bg-gray-200 rounded-tl-md rounded-tr-[36px] rounded-bl-[36px] rounded-br-md px-6 py-5 text-center shadow-md">
@@ -64,6 +72,20 @@ export function Product(props: ProductProps) {
           <button
             type="button"
             className="bg-purple-800 hover:bg-purple-400 transition duration-150 text-white w-9 h-9 flex items-center justify-center rounded-md"
+            disabled={quantity <= 0 ? true : false}
+            onClick={() =>
+              setProductsCart([
+                ...productsCart,
+                {
+                  image: props.image,
+                  tags: props.tags,
+                  name: props.name,
+                  description: props.description,
+                  price: props.price,
+                  quantity: quantity,
+                },
+              ])
+            }
           >
             <ShoppingCart size={22} weight="fill" />
           </button>
