@@ -63,7 +63,7 @@ export function Home() {
 
       <section className="pt-10 pb-28">
         <div className="container px-4 lg:px-14 mx-auto">
-          <h2 className="text-brown-500 text-3xl font-bold mb-14">
+          <h2 className="text-brown-500 text-3xl font-bold mb-14 text-center sm:text-left">
             Nossos cafés
           </h2>
 

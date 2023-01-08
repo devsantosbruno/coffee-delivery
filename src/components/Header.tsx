@@ -18,7 +18,7 @@ export function Header() {
         )
         .then((response) => {
           setUserLocation({
-            city: response.data.results[0].components.city,
+            city: response.data.results[0].components.town,
             stateCode: response.data.results[0].components.state_code,
           });
         });
@@ -27,9 +27,9 @@ export function Header() {
   }, []);
 
   return (
-    <div className="shadow-md sticky top-0 py-8 bg-gray-100 ">
+    <div className="shadow-md sticky top-0 py-4 sm:py-8 bg-gray-100 ">
       <div className="container px-4 lg:px-14 mx-auto">
-        <nav className="flex items-center justify-between">
+        <nav className="flex flex-wrap gap-4 items-center justify-between">
           <div className="flex">
             <NavLink to="/" title="Home">
               <img src={logo} alt="" className="max-w-8 max-h-8" />
@@ -42,7 +42,7 @@ export function Header() {
               {userLocation.city !== undefined &&
               userLocation.stateCode !== undefined
                 ? `${userLocation.city}, ${userLocation.stateCode}`
-                : "Porto Alegre, RS"}
+                : "Allow location"}
             </div>
 
             <NavLink to="/cart" title="Cart">
