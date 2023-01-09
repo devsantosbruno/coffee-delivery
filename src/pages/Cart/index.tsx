@@ -1,10 +1,30 @@
 import { CurrencyDollar, MapPinLine } from "phosphor-react";
+import { useContext } from "react";
 import { NavLink } from "react-router-dom";
+
+import { CartProducts } from "../../contexts/CartProducts";
+
 import { Input } from "../../components/Input";
 import { Payment } from "../../components/Payment";
 import { ProductCart } from "./components/ProductCart";
 
 export function Cart() {
+  const { productsCart } = useContext(CartProducts);
+
+  const deliveryValue = 7.9;
+
+  const arrayTeste = productsCart.map((product: any) => {
+    return parseFloat(product.price.replace(",", ".")) * product.quantity;
+  });
+
+  const totalCalculate = arrayTeste.reduce(function (
+    accumulator: any,
+    value: any
+  ) {
+    return accumulator + value;
+  },
+  0);
+
   return (
     <main className="bg-gray-100 min-h-[calc(100vh-104px)]">
       <section>
@@ -87,30 +107,44 @@ export function Cart() {
                 Cafés selecionados
               </h3>
 
-              <div className="bg-gray-200 p-6 sm:p-10 rounded-tl-md rounded-tr-[44px] rounded-bl-[44px] rounded-br-md shadow-sm">
-                <ProductCart />
-                <ProductCart />
+              <div className="bg-gray-200 px-6 pb-6 sm:px-10 sm:pb-10 rounded-tl-md rounded-tr-[44px] rounded-bl-[44px] rounded-br-md shadow-sm">
+                {productsCart.map((product: any) => (
+                  <ProductCart
+                    key={product.name}
+                    image={product.image}
+                    tags={product.tags}
+                    name={product.name}
+                    description={product.description}
+                    price={product.price}
+                    quantity={product.quantity}
+                  />
+                ))}
 
                 <div className="my-6">
                   <div className="flex items-center justify-between gap-2">
                     <p className="text-brown-300 text-sm font-bold">
                       Total de itens
                     </p>
-                    <span className="text-brown-300">R$ 29,70</span>
+                    <span className="text-brown-300">
+                      R$ {totalCalculate.toFixed(2).replace(".", ",")}
+                    </span>
                   </div>
 
                   <div className="flex items-center justify-between gap-2 my-3">
                     <p className="text-brown-300 text-sm">Entrega</p>
-                    <span className="text-brown-300">R$ 3,50</span>
+                    <span className="text-brown-300">
+                      R$ {deliveryValue.toFixed(2).replace(".", ",")}
+                    </span>
                   </div>
 
                   <div className="flex items-center justify-between gap-2">
-                    <strong className="text-brown-500 text-xl font-bold">
-                      Total
+                    <strong className="text-brown-500 text-xl">Total</strong>
+                    <strong className="text-brown-500 text-xl">
+                      R${" "}
+                      {(totalCalculate + deliveryValue)
+                        .toFixed(2)
+                        .replace(".", ",")}
                     </strong>
-                    <span className="text-brown-500 text-xl font-bold">
-                      R$ 33,20
-                    </span>
                   </div>
                 </div>
 

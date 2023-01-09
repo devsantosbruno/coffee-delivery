@@ -1,26 +1,17 @@
 import { Minus, Plus, ShoppingCart } from "phosphor-react";
 import { useState } from "react";
 
-// import coffeeLatte from "../../../assets/coffee-latte.png";
-import coffeeTraditional from "../../../assets/logo.png";
-
-export function ProductCart() {
-  const [quantity, setQuantity] = useState<number>(1);
+export function ProductCart(props: any) {
+  const [quantity, setQuantity] = useState<number>(props.quantity);
 
   return (
     <div>
       <div className="flex justify-between gap-5 py-8 border-b-[1px] border-gray-400">
         <div className="flex flex-col sm:flex-row gap-5">
-          <img
-            src={coffeeTraditional}
-            alt=""
-            className="max-w-[80px] max-h-[80px]"
-          />
+          <img src={props.image} alt="" className="max-w-[80px] max-h-[80px]" />
 
           <div className="flex flex-col justify-between">
-            <h4 className="text-brown-500 font-semibold mb-2">
-              Expresso Tradicional
-            </h4>
+            <h4 className="text-brown-500 font-semibold mb-2">{props.name}</h4>
 
             <div className="flex gap-2">
               <div className="bg-gray-400 px-3 py-2 rounded-md flex items-center gap-3">
@@ -61,7 +52,7 @@ export function ProductCart() {
           </div>
         </div>
 
-        <strong className="text-brown-300 font-bold">R$ 9,90</strong>
+        <strong className="text-brown-300 font-bold">R$ {props.price}</strong>
       </div>
     </div>
   );

@@ -1,12 +1,13 @@
 import { Coffee, Package, ShoppingCart, Timer } from "phosphor-react";
 import { useContext } from "react";
 
-import imageMain from "../../assets/image-main.png";
 import { Product } from "../../components/Product";
 import {
   CatalogProps,
   ProductsCatalogContext,
 } from "../../contexts/ProductsCatalog";
+
+import imageMain from "../../assets/image-main.png";
 
 export function Home() {
   const { catalog } = useContext(ProductsCatalogContext);

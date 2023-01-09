@@ -81,7 +81,7 @@ export function Product(props: ProductProps) {
                   tags: props.tags,
                   name: props.name,
                   description: props.description,
-                  price: props.price,
+                  price: priceBR,
                   quantity: quantity,
                 },
               ])
