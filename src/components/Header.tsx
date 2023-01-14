@@ -30,6 +30,8 @@ export function Header() {
     window.navigator.geolocation.getCurrentPosition(successfullLookup);
   }, []);
 
+  console.log(productsCart.length);
+
   return (
     <div className="shadow-md sticky top-0 py-4 sm:py-8 bg-gray-100 ">
       <div className="container px-4 lg:px-14 mx-auto">
@@ -49,7 +51,13 @@ export function Header() {
                 : "Allow location"}
             </div>
 
-            <NavLink to="/cart" title="Cart">
+            <NavLink
+              to={productsCart.length > 0 ? "/cart" : "/"}
+              title="Cart"
+              className={
+                productsCart.length > 0 ? "cursor-pointer" : "cursor-default"
+              }
+            >
               <div className="bg-yellow-200 p-2 rounded-md relative">
                 <ShoppingCart
                   size={22}
