@@ -25,6 +25,36 @@ export function Product(props: ProductProps) {
     });
   }, []);
 
+  function addToCartOrQuantity() {
+    const productsCartHaveTheProduct = productsCart.filter((product: any) => {
+      return product.name === props.name;
+    });
+
+    if (productsCartHaveTheProduct.length > 0) {
+      const updateCartWithQuantityUpdate = productsCart.filter(
+        (product: any) => {
+          if (product.name === props.name) {
+            return (product.quantity = quantity);
+          }
+        }
+      );
+
+      setProductsCart([...productsCart], updateCartWithQuantityUpdate);
+    } else {
+      setProductsCart([
+        ...productsCart,
+        {
+          image: props.image,
+          tags: props.tags,
+          name: props.name,
+          description: props.description,
+          price: priceBR,
+          quantity: quantity,
+        },
+      ]);
+    }
+  }
+
   // normalizing values
   let priceBR = props.price.toFixed(2).replace(".", ",");
 
@@ -76,19 +106,7 @@ export function Product(props: ProductProps) {
             type="button"
             className="bg-purple-800 hover:bg-purple-400 transition duration-150 text-white w-9 h-9 flex items-center justify-center rounded-md"
             disabled={quantity <= 0 ? true : false}
-            onClick={() =>
-              setProductsCart([
-                ...productsCart,
-                {
-                  image: props.image,
-                  tags: props.tags,
-                  name: props.name,
-                  description: props.description,
-                  price: priceBR,
-                  quantity: quantity,
-                },
-              ])
-            }
+            onClick={addToCartOrQuantity}
           >
             <ShoppingCart size={22} weight="fill" />
           </button>

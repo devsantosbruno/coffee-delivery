@@ -30,8 +30,6 @@ export function Header() {
     window.navigator.geolocation.getCurrentPosition(successfullLookup);
   }, []);
 
-  console.log(productsCart.length);
-
   return (
     <div className="shadow-md sticky top-0 py-4 sm:py-8 bg-gray-100 ">
       <div className="container px-4 lg:px-14 mx-auto">
