@@ -26,7 +26,7 @@ export function ProductsCatalogProvider({
 
   useEffect(() => {
     axios
-      .get("https://api.npoint.io/a380939a53668d2393dd", {})
+      .get("https://api.npoint.io/a380939a53668d2393dd")
       .then((response) => setCatalog(response.data));
   }, []);
 

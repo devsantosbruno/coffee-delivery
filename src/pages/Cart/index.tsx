@@ -9,21 +9,39 @@ import { Payment } from "../../components/Payment";
 import { ProductCart } from "./components/ProductCart";
 
 export function Cart() {
-  const { productsCart } = useContext(CartProducts);
+  const { productsCart, setProductsCart } = useContext(CartProducts);
 
   const deliveryValue = 7.9;
 
-  const arrayTeste = productsCart.map((product: any) => {
+  const arrayValues = productsCart.map((product: any) => {
     return parseFloat(product.price.replace(",", ".")) * product.quantity;
   });
 
-  const totalCalculate = arrayTeste.reduce(function (
-    accumulator: any,
-    value: any
+  const totalCalculate = arrayValues.reduce(function (
+    accumulator: number,
+    value: number
   ) {
     return accumulator + value;
   },
   0);
+
+  function removeProduct(productToDelete: any) {
+    const updateCartWithRemove = productsCart.filter((product: any) => {
+      return product.name !== productToDelete;
+    });
+
+    setProductsCart(updateCartWithRemove);
+  }
+
+  function updateQuantityProduct(nameProductUpdate: any, quantityProduct: any) {
+    const updateCartWithQuantityUpdate = productsCart.filter((product: any) => {
+      if (product.name === nameProductUpdate) {
+        return (product.quantity = quantityProduct);
+      }
+    });
+
+    setProductsCart([...productsCart], updateCartWithQuantityUpdate);
+  }
 
   return (
     <main className="bg-gray-100 min-h-[calc(100vh-104px)]">
@@ -117,6 +135,8 @@ export function Cart() {
                     description={product.description}
                     price={product.price}
                     quantity={product.quantity}
+                    updateQuantityProduct={updateQuantityProduct}
+                    onRemoveProduct={removeProduct}
                   />
                 ))}
 

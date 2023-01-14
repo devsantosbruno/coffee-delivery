@@ -1,8 +1,20 @@
 import { Minus, Plus, ShoppingCart } from "phosphor-react";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
+
+import { CartProducts } from "../../../contexts/CartProducts";
 
 export function ProductCart(props: any) {
   const [quantity, setQuantity] = useState<number>(props.quantity);
+
+  const { productsCart, setProductsCart } = useContext(CartProducts);
+
+  function handleRemoveProduct() {
+    props.onRemoveProduct(props.name);
+  }
+
+  useEffect(() => {
+    props.updateQuantityProduct(props.name, quantity);
+  }, [quantity]);
 
   return (
     <div>
@@ -19,10 +31,10 @@ export function ProductCart(props: any) {
                   type="button"
                   onClick={() =>
                     setQuantity((prevState) =>
-                      prevState > 0 ? prevState - 1 : prevState
+                      prevState > 1 ? prevState - 1 : prevState
                     )
                   }
-                  disabled={quantity <= 0 && true}
+                  disabled={quantity <= 1 && true}
                   className="text-purple-400 hover:text-purple-800 transition duration-150"
                 >
                   <Minus size={14} weight="bold" />
@@ -40,6 +52,7 @@ export function ProductCart(props: any) {
               <button
                 type="button"
                 className="bg-gray-400 text-brown-300 text-xs flex gap-1 items-center justify-center rounded-md px-2 py-2"
+                onClick={handleRemoveProduct}
               >
                 <ShoppingCart
                   size={18}
