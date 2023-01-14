@@ -14,16 +14,19 @@ interface ProductProps {
 }
 
 export function Product(props: ProductProps) {
+  const { productsCart, setProductsCart } = useContext(CartProducts);
   const [quantity, setQuantity] = useState<number>(0);
 
-  const { productsCart, setProductsCart } = useContext(CartProducts);
+  useEffect(() => {
+    productsCart.filter((product: any) => {
+      if (product.name == props.name) {
+        setQuantity(Number(product.quantity));
+      }
+    });
+  }, []);
 
   // normalizing values
   let priceBR = props.price.toFixed(2).replace(".", ",");
-
-  useEffect(() => {
-    console.log(productsCart);
-  }, [productsCart]);
 
   return (
     <div className="bg-gray-200 rounded-tl-md rounded-tr-[36px] rounded-bl-[36px] rounded-br-md px-6 py-5 text-center shadow-md">
