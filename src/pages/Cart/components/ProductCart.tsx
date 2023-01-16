@@ -52,7 +52,7 @@ export function ProductCart(props: any) {
               <button
                 type="button"
                 className="bg-gray-400 text-brown-300 text-xs flex gap-1 items-center justify-center rounded-md px-2 py-2"
-                onClick={handleRemoveProduct}
+                onClick={() => handleRemoveProduct()}
               >
                 <ShoppingCart
                   size={18}

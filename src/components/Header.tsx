@@ -31,7 +31,7 @@ export function Header() {
   }, []);
 
   return (
-    <div className="shadow-md sticky top-0 py-4 sm:py-8 bg-gray-100 ">
+    <div className="shadow-md sticky top-0 py-4 sm:py-8 bg-gray-100 z-50">
       <div className="container px-4 lg:px-14 mx-auto">
         <nav className="flex flex-wrap gap-4 items-center justify-between">
           <div className="flex">

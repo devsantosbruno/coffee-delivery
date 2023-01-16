@@ -11,6 +11,7 @@ interface ProductProps {
   price: number;
   image: string;
   description: string;
+  notificationCart?: any;
 }
 
 export function Product(props: ProductProps) {
@@ -106,7 +107,10 @@ export function Product(props: ProductProps) {
             type="button"
             className="bg-purple-800 hover:bg-purple-400 transition duration-150 text-white w-9 h-9 flex items-center justify-center rounded-md"
             disabled={quantity <= 0 ? true : false}
-            onClick={addToCartOrQuantity}
+            onClick={() => {
+              addToCartOrQuantity();
+              props.notificationCart(props.name);
+            }}
           >
             <ShoppingCart size={22} weight="fill" />
           </button>

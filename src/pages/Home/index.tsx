@@ -1,5 +1,5 @@
 import { Coffee, Package, ShoppingCart, Timer } from "phosphor-react";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import { Product } from "../../components/Product";
 import {
@@ -8,13 +8,51 @@ import {
 } from "../../contexts/ProductsCatalog";
 
 import imageMain from "../../assets/image-main.png";
+import { AddToCartNotification } from "./components/AddToCartNotification";
 
 export function Home() {
   const { catalog } = useContext(ProductsCatalogContext);
 
+  const [cartNotifications, setCartNotifications]: any = useState([]);
+
+  function testeNotification(valueTeste: any) {
+    setCartNotifications((prevState: any) => [...prevState, valueTeste]);
+  }
+
+  useEffect(() => {
+    if (cartNotifications > 0) {
+      setInterval(() => {
+        console.log(cartNotifications);
+        const testu = cartNotifications.shift();
+        setCartNotifications(testu);
+      }, 2000);
+    }
+  }, [cartNotifications]);
+
+  // useEffect(() => {
+  // });
+
+  // if (cartNotifications) {
+  // setInterval(() => {
+  //   console.log(43242331);
+  //   cartNotifications.shift();
+  // }, 1000);
+  // }
+
   return (
     <main className="max-w-screen overflow-hidden bg-gray-100">
-      <section className="bg-withColors bg-cover bg-bottom bg-no-repeat">
+      <section className="bg-withColors bg-cover bg-bottom bg-no-repeat relative">
+        <div className="fixed right-5 mt-5">
+          <div className="flex flex-col gap-2">
+            {cartNotifications.map((notification: any) => (
+              <AddToCartNotification
+                key={notification}
+                product={notification}
+              />
+            ))}
+          </div>
+        </div>
+
         <div className="container px-4 lg:px-14 mx-auto">
           <div className="lg:grid grid-cols-9 py-10 md:py-24">
             <div className="col-span-5">
@@ -77,6 +115,7 @@ export function Home() {
                 name={product.name}
                 description={product.description}
                 price={product.price}
+                notificationCart={testeNotification}
               />
             ))}
           </div>
