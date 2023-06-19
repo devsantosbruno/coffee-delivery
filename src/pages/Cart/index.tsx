@@ -7,7 +7,7 @@ import {
   Money,
 } from "phosphor-react";
 import { useContext, useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 import { CartProducts } from "../../contexts/CartProducts";
 
@@ -17,6 +17,13 @@ import { ProductCart } from "./components/ProductCart";
 
 export function Cart() {
   const { productsCart, setProductsCart } = useContext(CartProducts);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (productsCart.length < 1) {
+      navigate("/");
+    }
+  }, []);
 
   const deliveryValue = 7.9;
 
