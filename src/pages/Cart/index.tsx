@@ -1,5 +1,11 @@
-import { CurrencyDollar, MapPinLine } from "phosphor-react";
-import { useContext } from "react";
+import {
+  Bank,
+  CreditCard,
+  CurrencyDollar,
+  MapPinLine,
+  Money,
+} from "phosphor-react";
+import { useContext, useState } from "react";
 import { NavLink } from "react-router-dom";
 
 import { CartProducts } from "../../contexts/CartProducts";
@@ -41,6 +47,12 @@ export function Cart() {
     });
 
     setProductsCart([...productsCart], updateCartWithQuantityUpdate);
+  }
+
+  const [optionPaymentChosen, setPaymentOptionChosen] = useState("DINHEIRO");
+
+  function selectPaymentOption(valueReceivedForPaymentComponent: string) {
+    setPaymentOptionChosen(valueReceivedForPaymentComponent);
   }
 
   return (
@@ -113,9 +125,24 @@ export function Cart() {
                 </div>
 
                 <div className="flex flex-wrap sm:flex-nowrap justify-center gap-3">
-                  <Payment type="CARTÃO DE CRÉDITO" />
-                  <Payment type="CARTÃO DE DÉBITO" />
-                  <Payment type="DINHEIRO" />
+                  <Payment
+                    type="CARTÃO DE CRÉDITO"
+                    icon={<CreditCard size={18} className="text-purple-400" />}
+                    selectPaymentOption={selectPaymentOption}
+                    currentChoose={optionPaymentChosen}
+                  />
+                  <Payment
+                    type="CARTÃO DE DÉBITO"
+                    icon={<Bank size={18} className="text-purple-400" />}
+                    selectPaymentOption={selectPaymentOption}
+                    currentChoose={optionPaymentChosen}
+                  />
+                  <Payment
+                    type="DINHEIRO"
+                    icon={<Money size={18} className="text-purple-400" />}
+                    selectPaymentOption={selectPaymentOption}
+                    currentChoose={optionPaymentChosen}
+                  />
                 </div>
               </div>
             </div>
@@ -169,7 +196,7 @@ export function Cart() {
                 </div>
 
                 <NavLink
-                  to="/summary"
+                  to={""}
                   title="Summary"
                   className="grid bg-yellow-500 text-white font-bold text-sm p-3 rounded-md text-center"
                 >

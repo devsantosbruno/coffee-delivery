@@ -1,21 +1,21 @@
-import { Bank, CreditCard, Money } from "phosphor-react";
-
-interface typePaymentProps {
+interface paymentProps {
   type: "CARTÃO DE CRÉDITO" | "CARTÃO DE DÉBITO" | "DINHEIRO";
+  icon: any;
+  selectPaymentOption: any;
+  currentChoose: any;
 }
 
-export function Payment(props: typePaymentProps) {
+export function Payment(props: paymentProps) {
   return (
-    <button className="bg-gray-400 py-4 px-5 rounded-md flex items-center gap-3 text-xs text-brown-300 font-semibold w-full max-w-[250px]">
-      {props.type === "CARTÃO DE CRÉDITO" && (
-        <CreditCard size={18} className="text-purple-400" />
-      )}
-      {props.type === "CARTÃO DE DÉBITO" && (
-        <Bank size={18} className="text-purple-400" />
-      )}
-      {props.type === "DINHEIRO" && (
-        <Money size={18} className="text-purple-400" />
-      )}
+    <button
+      onClick={() => props.selectPaymentOption(props.type)}
+      className={`py-4 px-5 rounded-md flex items-center gap-3 text-xs text-brown-300 font-semibold w-full max-w-[250px] border-[1px] ${
+        props.currentChoose === props.type
+          ? `border-purple-400 bg-purple-200`
+          : `border-transparent bg-gray-400`
+      }`}
+    >
+      {props.icon}
 
       {props.type}
     </button>
