@@ -267,7 +267,7 @@ export function Cart() {
                   to={completeValues ? "/summary" : ""}
                   title="Summary"
                   className={`grid bg-yellow-500 text-white font-bold text-sm p-3 rounded-md text-center ${
-                    !completeValues && `opacity-25 cursor-default`
+                    !completeValues && `opacity-25 cursor-not-allowed`
                   }`}
                 >
                   CONFIRMAR PEDIDO
