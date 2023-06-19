@@ -49,7 +49,14 @@ export function Cart() {
     setProductsCart([...productsCart], updateCartWithQuantityUpdate);
   }
 
-  const [optionPaymentChosen, setPaymentOptionChosen] = useState("DINHEIRO");
+  const [optionPaymentChosen, setPaymentOptionChosen] = useState("");
+  const [cepValue, setCepValue] = useState("");
+  const [numberValue, setNumberValue] = useState("");
+
+  const completeValues =
+    optionPaymentChosen.length > 0 &&
+    cepValue.length > 0 &&
+    numberValue.length > 0;
 
   function selectPaymentOption(valueReceivedForPaymentComponent: string) {
     setPaymentOptionChosen(valueReceivedForPaymentComponent);
@@ -68,6 +75,7 @@ export function Cart() {
               <div className="bg-gray-200 p-6 sm:p-10 rounded-md shadow-sm">
                 <div className="flex gap-2 mb-8">
                   <MapPinLine size={20} className="text-yellow-700 mt-1" />
+
                   <div className="flex flex-col">
                     <span className="text-brown-500 font-semibold">
                       Endereço de Entrega
@@ -81,7 +89,7 @@ export function Cart() {
                 <form action="">
                   <div className="flex flex-col gap-4">
                     <div>
-                      <Input placeholder="CEP" />
+                      <Input placeholder="CEP" setValueInput={setCepValue} />
                     </div>
 
                     <div>
@@ -90,7 +98,10 @@ export function Cart() {
 
                     <div className="grid grid-cols-3 sm:grid-cols-4 gap-3">
                       <div className="sm:col-span-2">
-                        <Input placeholder="Número" />
+                        <Input
+                          placeholder="Número"
+                          setValueInput={setNumberValue}
+                        />
                       </div>
                       <div className="col-span-2">
                         <Input placeholder="Complemento (opcional)" />
@@ -196,9 +207,11 @@ export function Cart() {
                 </div>
 
                 <NavLink
-                  to={""}
+                  to={completeValues ? "/summary" : ""}
                   title="Summary"
-                  className="grid bg-yellow-500 text-white font-bold text-sm p-3 rounded-md text-center"
+                  className={`grid bg-yellow-500 text-white font-bold text-sm p-3 rounded-md text-center ${
+                    !completeValues && `opacity-25 cursor-default`
+                  }`}
                 >
                   CONFIRMAR PEDIDO
                 </NavLink>
