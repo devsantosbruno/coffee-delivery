@@ -130,7 +130,7 @@ export function Cart() {
                 <form action="">
                   <div className="flex flex-col gap-4">
                     <div>
-                      <Input placeholder="CEP" setValueInput={setCepValue} />
+                      <Input placeholder="CEP" setInputValue={setCepValue} />
                     </div>
 
                     <div>
@@ -145,7 +145,7 @@ export function Cart() {
                       <div className="sm:col-span-2">
                         <Input
                           placeholder="Número"
-                          setValueInput={setNumberValue}
+                          setInputValue={setNumberValue}
                         />
                       </div>
                       <div className="col-span-2">
