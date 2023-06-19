@@ -1,3 +1,4 @@
+import axios from "axios";
 import {
   Bank,
   CreditCard,
@@ -5,7 +6,7 @@ import {
   MapPinLine,
   Money,
 } from "phosphor-react";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 
 import { CartProducts } from "../../contexts/CartProducts";
@@ -52,11 +53,44 @@ export function Cart() {
   const [optionPaymentChosen, setPaymentOptionChosen] = useState("");
   const [cepValue, setCepValue] = useState("");
   const [numberValue, setNumberValue] = useState("");
+  const [addressData, setAddressData] = useState({
+    bairro: "",
+    cep: "",
+    complemento: "",
+    ddd: "",
+    gia: "",
+    ibge: "",
+    localidade: "",
+    logradouro: "",
+    siafi: "",
+    uf: "",
+  });
 
   const completeValues =
     optionPaymentChosen.length > 0 &&
-    cepValue.length > 0 &&
+    cepValue.replace("-", "").length === 8 &&
     numberValue.length > 0;
+
+  useEffect(() => {
+    if (cepValue.replace("-", "").length === 8) {
+      axios
+        .get(`https://viacep.com.br/ws/${cepValue}/json/`)
+        .then((response) => setAddressData(response.data));
+    } else {
+      setAddressData({
+        bairro: "",
+        cep: "",
+        complemento: "",
+        ddd: "",
+        gia: "",
+        ibge: "",
+        localidade: "",
+        logradouro: "",
+        siafi: "",
+        uf: "",
+      });
+    }
+  }, [cepValue]);
 
   function selectPaymentOption(valueReceivedForPaymentComponent: string) {
     setPaymentOptionChosen(valueReceivedForPaymentComponent);
@@ -93,7 +127,11 @@ export function Cart() {
                     </div>
 
                     <div>
-                      <Input placeholder="Rua" />
+                      <Input
+                        placeholder="Rua"
+                        value={addressData.logradouro}
+                        disabled
+                      />
                     </div>
 
                     <div className="grid grid-cols-3 sm:grid-cols-4 gap-3">
@@ -109,11 +147,23 @@ export function Cart() {
                     </div>
 
                     <div className="grid sm:grid-cols-2 gap-3">
-                      <Input placeholder="Bairro" />
+                      <Input
+                        placeholder="Bairro"
+                        value={addressData.bairro}
+                        disabled
+                      />
                       <div className="flex gap-3">
-                        <Input placeholder="Cidade" />
+                        <Input
+                          placeholder="Cidade"
+                          value={addressData.localidade}
+                          disabled
+                        />
                         <div className="w-36">
-                          <Input placeholder="UF" />
+                          <Input
+                            placeholder="UF"
+                            value={addressData.uf}
+                            disabled
+                          />
                         </div>
                       </div>
                     </div>
