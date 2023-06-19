@@ -23,7 +23,7 @@ export function Cart() {
     if (productsCart.length < 1) {
       navigate("/");
     }
-  }, []);
+  }, [productsCart]);
 
   const deliveryValue = 7.9;
 
