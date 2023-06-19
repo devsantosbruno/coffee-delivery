@@ -15,34 +15,25 @@ export function Home() {
 
   const [cartNotifications, setCartNotifications]: any = useState([]);
 
-  function testeNotification(valueTeste: any) {
-    setCartNotifications((prevState: any) => [...prevState, valueTeste]);
+  function productCartNotification(productNotificationName: string) {
+    setCartNotifications((prevState: any) => [
+      ...prevState,
+      productNotificationName,
+    ]);
   }
 
   useEffect(() => {
     if (cartNotifications > 0) {
       setInterval(() => {
-        console.log(cartNotifications);
-        const testu = cartNotifications.shift();
-        setCartNotifications(testu);
+        setCartNotifications(cartNotifications.shift());
       }, 2000);
     }
   }, [cartNotifications]);
 
-  // useEffect(() => {
-  // });
-
-  // if (cartNotifications) {
-  // setInterval(() => {
-  //   console.log(43242331);
-  //   cartNotifications.shift();
-  // }, 1000);
-  // }
-
   return (
     <main className="max-w-screen overflow-hidden bg-gray-100">
       <section className="bg-withColors bg-cover bg-bottom bg-no-repeat relative">
-        <div className="fixed right-5 mt-5">
+        <div className="fixed right-5 mt-5 z-50">
           <div className="flex flex-col gap-2">
             {cartNotifications.map((notification: any) => (
               <AddToCartNotification
@@ -115,7 +106,7 @@ export function Home() {
                 name={product.name}
                 description={product.description}
                 price={product.price}
-                notificationCart={testeNotification}
+                notificationCart={productCartNotification}
               />
             ))}
           </div>
