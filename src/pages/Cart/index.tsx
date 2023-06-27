@@ -14,10 +14,14 @@ import { CartProducts } from "../../contexts/CartProducts";
 import { Input } from "../../components/Input";
 import { Payment } from "../../components/Payment";
 import { ProductCart } from "./components/ProductCart";
+import { CartInfos } from "../../contexts/CartInfos";
 
 export function Cart() {
   const { productsCart, setProductsCart } = useContext(CartProducts);
+  const { setInfosCart } = useContext(CartInfos);
   const navigate = useNavigate();
+
+  const [deliveryValue, setDeliveryValue] = useState(0);
 
   useEffect(() => {
     if (productsCart.length < 1) {
@@ -25,7 +29,9 @@ export function Cart() {
     }
   }, [productsCart]);
 
-  const deliveryValue = 7.9;
+  useEffect(() => {
+    setDeliveryValue(Math.random() * 10 + 3);
+  }, []);
 
   const arrayValues = productsCart.map((product: any) => {
     return parseFloat(product.price.replace(",", ".")) * product.quantity;
@@ -60,6 +66,7 @@ export function Cart() {
   const [optionPaymentChosen, setPaymentOptionChosen] = useState("");
   const [cepValue, setCepValue] = useState("");
   const [numberValue, setNumberValue] = useState("");
+  const [complementValue, setComplementValue] = useState("");
   const [addressData, setAddressData] = useState({
     bairro: "",
     cep: "",
@@ -101,6 +108,23 @@ export function Cart() {
 
   function selectPaymentOption(valueReceivedForPaymentComponent: string) {
     setPaymentOptionChosen(valueReceivedForPaymentComponent);
+  }
+
+  async function createSummaryInfos() {
+    await setInfosCart({
+      address: {
+        street: addressData.logradouro,
+        number: numberValue,
+        complement: complementValue,
+        district: addressData.bairro,
+        city: addressData.localidade,
+        UF: addressData.uf,
+      },
+      paymentType: optionPaymentChosen,
+      deliveryPrice: deliveryValue,
+    });
+
+    navigate("/summary");
   }
 
   return (
@@ -149,7 +173,10 @@ export function Cart() {
                         />
                       </div>
                       <div className="col-span-2">
-                        <Input placeholder="Complemento (opcional)" />
+                        <Input
+                          placeholder="Complemento (opcional)"
+                          setInputValue={setComplementValue}
+                        />
                       </div>
                     </div>
 
@@ -263,15 +290,15 @@ export function Cart() {
                   </div>
                 </div>
 
-                <NavLink
-                  to={completeValues ? "/summary" : ""}
-                  title="Summary"
-                  className={`grid bg-yellow-500 text-white font-bold text-sm p-3 rounded-md text-center ${
+                <button
+                  type="button"
+                  onClick={createSummaryInfos}
+                  className={`w-full bg-yellow-500 text-white font-bold text-sm p-3 rounded-md text-center ${
                     !completeValues && `opacity-25 cursor-not-allowed`
                   }`}
                 >
                   CONFIRMAR PEDIDO
-                </NavLink>
+                </button>
               </div>
             </div>
           </div>

@@ -1,7 +1,23 @@
 import { CurrencyDollar, MapPin, Timer } from "phosphor-react";
+import { useContext, useEffect } from "react";
+import { CartInfos } from "../../contexts/CartInfos";
+
 import image from "../../assets/illustration.svg";
+import { CartProducts } from "../../contexts/CartProducts";
+import { useNavigate } from "react-router-dom";
 
 export function Summary() {
+  const { productsCart } = useContext(CartProducts);
+  const { infosCart } = useContext(CartInfos);
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (productsCart.length < 1) {
+      navigate("/");
+    }
+  }, [productsCart]);
+
   return (
     <main className="bg-gray-100 min-h-[calc(100vh-104px)]">
       <section className="h-full flex items-center">
@@ -24,8 +40,12 @@ export function Summary() {
 
                     <span className="text-brown-300">
                       Entrega em{" "}
-                      <strong>Rua João Daniel Martinelli, 102</strong>
-                      <br /> Farrapos - Porto Alegre, RS
+                      <strong>
+                        {infosCart.address.street}, {infosCart.address.number} -{" "}
+                        {infosCart.address?.complement}
+                      </strong>
+                      <br /> {infosCart.address.district} -{" "}
+                      {infosCart.address.city}, {infosCart.address.UF}
                     </span>
                   </div>
 
@@ -36,7 +56,10 @@ export function Summary() {
 
                     <span className="text-brown-300">
                       Previsão de entrega <br />
-                      <strong>20 min - 30 min</strong>
+                      <strong>
+                        {Math.floor(infosCart.deliveryPrice * 4)} min -{" "}
+                        {Math.round(infosCart.deliveryPrice * 5)} min
+                      </strong>
                     </span>
                   </div>
 
@@ -47,7 +70,7 @@ export function Summary() {
 
                     <span className="text-brown-300">
                       Pagamento na entrega <br />
-                      <strong>Cartão de Crédito</strong>
+                      <strong>{infosCart.paymentType}</strong>
                     </span>
                   </div>
                 </div>
