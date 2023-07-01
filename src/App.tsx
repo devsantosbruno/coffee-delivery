@@ -1,5 +1,13 @@
+import { BrowserRouter } from "react-router-dom";
+
+import { Router } from "./Router";
+
 import "./styles/main.css";
 
 export function App() {
-  return <h1>Hello!</h1>;
+  return (
+    <BrowserRouter>
+      <Router />
+    </BrowserRouter>
+  );
 }
