@@ -8,7 +8,6 @@ import {
 } from "../../contexts/ProductsCatalog";
 
 import imageMain from "../../assets/image-main.png";
-import { AddToCartNotification } from "./components/AddToCartNotification";
 
 export function Home() {
   const { catalog } = useContext(ProductsCatalogContext);
@@ -33,7 +32,7 @@ export function Home() {
   return (
     <main className="max-w-screen overflow-hidden bg-gray-100">
       <section className="bg-withColors bg-cover bg-bottom bg-no-repeat relative">
-        <div className="fixed right-5 mt-5 z-50">
+        {/* <div className="fixed right-5 mt-5 z-50">
           <div className="flex flex-col gap-2">
             {cartNotifications.map((notification: any) => (
               <AddToCartNotification
@@ -42,7 +41,7 @@ export function Home() {
               />
             ))}
           </div>
-        </div>
+        </div> */}
 
         <div className="container px-4 lg:px-14 mx-auto">
           <div className="lg:grid grid-cols-9 py-10 md:py-24">
