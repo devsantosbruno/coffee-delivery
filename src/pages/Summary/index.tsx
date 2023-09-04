@@ -7,7 +7,7 @@ import { CartProducts } from "../../contexts/CartProducts";
 import { useNavigate } from "react-router-dom";
 
 export function Summary() {
-  const { productsCart } = useContext(CartProducts);
+  const { productsCart, setProductsCart } = useContext(CartProducts);
   const { infosCart } = useContext(CartInfos);
 
   const navigate = useNavigate();
@@ -16,6 +16,7 @@ export function Summary() {
     if (productsCart.length < 1) {
       navigate("/");
     }
+    setProductsCart({});
   }, [productsCart]);
 
   return (
