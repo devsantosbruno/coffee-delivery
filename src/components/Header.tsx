@@ -64,7 +64,7 @@ export function Header() {
                 />
 
                 <span className="bg-yellow-700 text-white w-5 h-5 flex items-center justify-center rounded-full text-xs absolute -top-[10px] -right-[10px]">
-                  {productsCart.length}
+                  {productsCart.length > 0 ? productsCart.length : 0}
                 </span>
               </div>
             </NavLink>
