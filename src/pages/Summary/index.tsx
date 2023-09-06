@@ -40,7 +40,7 @@ export function Summary() {
                     </span>
 
                     <span className="text-brown-300">
-                      Delivery in 5{" "}
+                      Delivery in{" "}
                       <strong>
                         {infosCart.address.street}, {infosCart.address.number} -{" "}
                         {infosCart.address?.complement}
