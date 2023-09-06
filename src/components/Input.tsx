@@ -16,8 +16,7 @@ export function Input(props: InputProps) {
       onChange={(value) => props.setInputValue(value.currentTarget.value)}
       value={props.value}
       disabled={props.disabled}
-      maxLength={props.placeholder === "CEP" ? 8 : undefined}
-      // {...props}
+      maxLength={props.placeholder === "Zip Code" ? 8 : undefined}
     />
   );
 }

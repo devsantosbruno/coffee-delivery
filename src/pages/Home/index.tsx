@@ -32,27 +32,16 @@ export function Home() {
   return (
     <main className="max-w-screen overflow-hidden bg-gray-100">
       <section className="bg-withColors bg-cover bg-bottom bg-no-repeat relative">
-        {/* <div className="fixed right-5 mt-5 z-50">
-          <div className="flex flex-col gap-2">
-            {cartNotifications.map((notification: any) => (
-              <AddToCartNotification
-                key={notification}
-                product={notification}
-              />
-            ))}
-          </div>
-        </div> */}
-
         <div className="container px-4 lg:px-14 mx-auto">
           <div className="lg:grid grid-cols-9 py-10 md:py-24">
             <div className="col-span-5">
               <h1 className="text-4xl sm:text-5xl sm:leading-[62px] font-bold text-brown-700">
-                Encontre o café perfeito para qualquer hora do dia
+                Find the perfect coffee for any time of day
               </h1>
 
               <p className="text-xl mt-4 text-brown-500">
-                Com o Coffee Delivery você recebe seu café onde estiver, a
-                qualquer hora
+                With Coffee Delivery you get your coffee wherever you are, any
+                time
               </p>
 
               <ul className="text-brown-300 grid sm:grid-cols-2 gap-5 mt-16">
@@ -60,25 +49,25 @@ export function Home() {
                   <span className="w-8 h-8 flex items-center justify-center rounded-full text-white bg-yellow-700">
                     <ShoppingCart size={16} weight="fill" />
                   </span>
-                  Compra simples e segura
+                  Simple and secure purchase
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="w-8 h-8 flex items-center justify-center rounded-full text-white bg-brown-300">
                     <Package size={16} weight="fill" />
                   </span>
-                  Embalagem mantém o café intacto
+                  Packaging keeps the coffee intact
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="w-8 h-8 flex items-center justify-center rounded-full text-white bg-yellow-500">
                     <Timer size={16} weight="fill" />
                   </span>
-                  Entrega rápida e rastreada
+                  Fast and tracked delivery
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="w-8 h-8 flex items-center justify-center rounded-full text-white bg-purple-500">
                     <Coffee size={16} weight="fill" />
                   </span>
-                  O café chega fresquinho até você
+                  Coffee arrives fresh to you
                 </li>
               </ul>
             </div>
@@ -93,7 +82,7 @@ export function Home() {
       <section className="pt-10 pb-28">
         <div className="container px-4 lg:px-14 mx-auto">
           <h2 className="text-brown-500 text-3xl font-bold mb-14 text-center sm:text-left">
-            Nossos cafés
+            Our cafes
           </h2>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-x-8 gap-y-10">
