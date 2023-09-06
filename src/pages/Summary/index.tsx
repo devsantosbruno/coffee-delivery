@@ -17,7 +17,7 @@ export function Summary() {
       navigate("/");
     }
     setProductsCart({});
-  }, [productsCart]);
+  }, []);
 
   return (
     <main className="bg-gray-100 min-h-[calc(100vh-104px)]">
