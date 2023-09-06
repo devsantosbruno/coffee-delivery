@@ -50,15 +50,12 @@ export function Product(props: ProductProps) {
           tags: props.tags,
           name: props.name,
           description: props.description,
-          price: priceBR,
+          price: props.price,
           quantity: quantity,
         },
       ]);
     }
   }
-
-  // normalizing values
-  let priceBR = props.price.toFixed(2).replace(".", ",");
 
   // toasts
   const [open, setOpen] = useState(false);
@@ -100,7 +97,7 @@ export function Product(props: ProductProps) {
 
         <div className="flex items-center justify-between mt-8">
           <span className="text-lg text-brown-300">
-            R$ <strong className="text-2xl">{priceBR}</strong>
+            $ <strong className="text-2xl">{props.price}</strong>
           </span>
 
           <div className="flex gap-2">
@@ -136,7 +133,7 @@ export function Product(props: ProductProps) {
                 <Toast.Title className="[grid-area:_title] mb-[5px] font-medium text-slate12 text-[15px]">
                   {props.name}
                   <br />
-                  adicionado ao carrinho
+                  Added to Cart
                 </Toast.Title>
                 <Toast.Description asChild>
                   <time

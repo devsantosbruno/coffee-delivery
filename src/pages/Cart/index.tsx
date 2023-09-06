@@ -7,7 +7,7 @@ import {
   Money,
 } from "phosphor-react";
 import { useContext, useEffect, useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { CartProducts } from "../../contexts/CartProducts";
 
@@ -34,7 +34,7 @@ export function Cart() {
   }, []);
 
   const arrayValues = productsCart.map((product: any) => {
-    return parseFloat(product.price.replace(",", ".")) * product.quantity;
+    return parseFloat(product.price) * product.quantity;
   });
 
   const totalCalculate = arrayValues.reduce(function (
@@ -134,7 +134,7 @@ export function Cart() {
           <div className="xl:grid grid-cols-9 gap-8">
             <div className="col-span-5">
               <h3 className="font-bold text-lg text-brown-500 mb-4">
-                Complete seu pedido
+                Fill your order
               </h3>
 
               <div className="bg-gray-200 p-6 sm:p-10 rounded-md shadow-sm">
@@ -143,10 +143,10 @@ export function Cart() {
 
                   <div className="flex flex-col">
                     <span className="text-brown-500 font-semibold">
-                      Endereço de Entrega
+                      Delivery Address
                     </span>
                     <span className="text-brown-300 text-sm">
-                      Informe o endereço onde deseja receber seu pedido
+                      Enter the address where you want to receive your order
                     </span>
                   </div>
                 </div>
@@ -154,12 +154,15 @@ export function Cart() {
                 <form action="">
                   <div className="flex flex-col gap-4">
                     <div>
-                      <Input placeholder="CEP" setInputValue={setCepValue} />
+                      <Input
+                        placeholder="Zip Code"
+                        setInputValue={setCepValue}
+                      />
                     </div>
 
                     <div>
                       <Input
-                        placeholder="Rua"
+                        placeholder="Street"
                         value={addressData.logradouro}
                         disabled
                       />
@@ -168,7 +171,7 @@ export function Cart() {
                     <div className="grid grid-cols-3 sm:grid-cols-4 gap-3">
                       <div className="sm:col-span-2">
                         <Input
-                          placeholder="Número"
+                          placeholder="Number"
                           setInputValue={setNumberValue}
                         />
                       </div>
@@ -182,19 +185,19 @@ export function Cart() {
 
                     <div className="grid sm:grid-cols-2 gap-3">
                       <Input
-                        placeholder="Bairro"
+                        placeholder="District"
                         value={addressData.bairro}
                         disabled
                       />
                       <div className="flex gap-3">
                         <Input
-                          placeholder="Cidade"
+                          placeholder="City"
                           value={addressData.localidade}
                           disabled
                         />
                         <div className="w-36">
                           <Input
-                            placeholder="UF"
+                            placeholder="State"
                             value={addressData.uf}
                             disabled
                           />
@@ -210,30 +213,30 @@ export function Cart() {
                   <CurrencyDollar size={20} className="mt-1 text-purple-400" />
                   <div className="flex flex-col">
                     <span className="text-brown-500 font-semibold">
-                      Pagamento
+                      Payment
                     </span>
                     <span className="text-brown-300 text-sm">
-                      O pagamento é feito na entrega. Escolha a forma que deseja
-                      pagar
+                      Payment is made on delivery. Choose the way you want to
+                      pay
                     </span>
                   </div>
                 </div>
 
                 <div className="flex flex-wrap sm:flex-nowrap justify-center gap-3">
                   <Payment
-                    type="CARTÃO DE CRÉDITO"
+                    type="CREDIT CARD"
                     icon={<CreditCard size={18} className="text-purple-400" />}
                     selectPaymentOption={selectPaymentOption}
                     currentChoose={optionPaymentChosen}
                   />
                   <Payment
-                    type="CARTÃO DE DÉBITO"
+                    type="DEBIT CARD"
                     icon={<Bank size={18} className="text-purple-400" />}
                     selectPaymentOption={selectPaymentOption}
                     currentChoose={optionPaymentChosen}
                   />
                   <Payment
-                    type="DINHEIRO"
+                    type="MONEY"
                     icon={<Money size={18} className="text-purple-400" />}
                     selectPaymentOption={selectPaymentOption}
                     currentChoose={optionPaymentChosen}
@@ -244,7 +247,7 @@ export function Cart() {
 
             <div className="mt-10 xl:mt-0 col-span-4">
               <h3 className="font-bold text-lg text-brown-500 mb-4">
-                Cafés selecionados
+                Coffee's selected
               </h3>
 
               <div className="bg-gray-200 px-6 pb-6 sm:px-10 sm:pb-10 rounded-tl-md rounded-tr-[44px] rounded-bl-[44px] rounded-br-md shadow-sm">
@@ -265,27 +268,24 @@ export function Cart() {
                 <div className="my-6">
                   <div className="flex items-center justify-between gap-2">
                     <p className="text-brown-300 text-sm font-bold">
-                      Total de itens
+                      Items Total
                     </p>
                     <span className="text-brown-300">
-                      R$ {totalCalculate.toFixed(2).replace(".", ",")}
+                      $ {totalCalculate.toFixed(2)}
                     </span>
                   </div>
 
                   <div className="flex items-center justify-between gap-2 my-3">
-                    <p className="text-brown-300 text-sm">Entrega</p>
+                    <p className="text-brown-300 text-sm">Delivery</p>
                     <span className="text-brown-300">
-                      R$ {deliveryValue.toFixed(2).replace(".", ",")}
+                      $ {deliveryValue.toFixed(2)}
                     </span>
                   </div>
 
                   <div className="flex items-center justify-between gap-2">
                     <strong className="text-brown-500 text-xl">Total</strong>
                     <strong className="text-brown-500 text-xl">
-                      R${" "}
-                      {(totalCalculate + deliveryValue)
-                        .toFixed(2)
-                        .replace(".", ",")}
+                      $ {(totalCalculate + deliveryValue).toFixed(2)}
                     </strong>
                   </div>
                 </div>
@@ -297,7 +297,7 @@ export function Cart() {
                     !completeValues && `opacity-25 cursor-not-allowed`
                   }`}
                 >
-                  CONFIRMAR PEDIDO
+                  ORDER
                 </button>
               </div>
             </div>

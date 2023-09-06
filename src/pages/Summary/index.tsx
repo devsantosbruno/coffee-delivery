@@ -26,10 +26,10 @@ export function Summary() {
           <div className="md:grid grid-cols-2 items-end gap-8 w-full">
             <div className="mb-8 md:mb-0">
               <h1 className="text-yellow-700 font-extrabold text-4xl mb-1">
-                Uhu! Pedido confirmado
+                Congrats! Order Confirmed
               </h1>
               <p className="text-brown-500 text-xl">
-                Agora é só aguardar que logo o café chegará até você
+                Now just wait for the coffee to come to you soon
               </p>
 
               <div className="mt-10 bg-gradientBorder p-[2px] rounded-tl-md rounded-tr-[36px] rounded-bl-[36px] rounded-br-md">
@@ -40,7 +40,7 @@ export function Summary() {
                     </span>
 
                     <span className="text-brown-300">
-                      Entrega em{" "}
+                      Delivery in 5{" "}
                       <strong>
                         {infosCart.address.street}, {infosCart.address.number} -{" "}
                         {infosCart.address?.complement}
@@ -56,10 +56,10 @@ export function Summary() {
                     </span>
 
                     <span className="text-brown-300">
-                      Previsão de entrega <br />
+                      Delivery forecast <br />
                       <strong>
-                        {Math.floor(infosCart.deliveryPrice * 4)} min -{" "}
-                        {Math.round(infosCart.deliveryPrice * 5)} min
+                        {Math.floor(infosCart.deliveryPrice * 4)} minutes -{" "}
+                        {Math.round(infosCart.deliveryPrice * 5)} minutes
                       </strong>
                     </span>
                   </div>
@@ -70,7 +70,7 @@ export function Summary() {
                     </span>
 
                     <span className="text-brown-300">
-                      Pagamento na entrega <br />
+                      Payment on delivery <br />
                       <strong>{infosCart.paymentType}</strong>
                     </span>
                   </div>

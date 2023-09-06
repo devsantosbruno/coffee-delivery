@@ -1,5 +1,5 @@
 interface paymentProps {
-  type: "CARTÃO DE CRÉDITO" | "CARTÃO DE DÉBITO" | "DINHEIRO";
+  type: "CREDIT CARD" | "DEBIT CARD" | "MONEY";
   icon: any;
   selectPaymentOption: any;
   currentChoose: any;
